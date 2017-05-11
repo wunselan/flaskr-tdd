@@ -1,4 +1,5 @@
 from app import app
+import os
 import unittest
 
 
@@ -9,6 +10,9 @@ class BasicTestCase(unittest.TestCase):
         response = tester.get('/', content_type='html/text')
 
         self.assertEqual(response.status_code, 404)
+
+    def test_database(self):
+        self.assertTrue(os.path.exists('flaskr.db'))
 
 
 if __name__ == '__main__':
