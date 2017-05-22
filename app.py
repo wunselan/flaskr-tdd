@@ -42,7 +42,7 @@ def close_db(error):
 
 
 @app.route('/')
-def show_entries():
+def index():
     '''Searches the database for entries, then displays them.'''
     db = get_db()
     cur = db.execute('select * from entries order by id desc')
