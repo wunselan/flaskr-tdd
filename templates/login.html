@@ -2,29 +2,24 @@
 <html>
     <head>
         <title>Flaskr-TDD | Login</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
     </head>
     <body>
-        <div class="page">
+        <div class="container">
             <h1>Flaskr-TDD</h1>
-            <div class="metanav">
-                {% if not session.logged_in %}
-                <a href="{{ url_for('login') }}">Log In</a>
-                {% else %}
-                <a href="{{ url_for('logout') }}">Log Out</a>
-                {% endif %}
-            </div>
+
             {% for message in get_flashed_messages() %}
             <div class="flash">{{ message }}</div>
             {% endfor %}
-            {% block body %}{% endblock %}
 
-            <h2>Login</h2>
+            <h3>Login</h3>
+
             {% if error %}
             <p class="error">
                 <strong>Error:</strong> {{ error }}
             </p>
             {% endif %}
+
             <form action="{{ url_for('login') }}" method="post">
                 <dl>
                     <dt>Username</dt>
@@ -35,41 +30,15 @@
                         <input type="password" name="password"/>
                     </dd>
                     <dd>
-                        <input type="submit" value="Login"/>
+                        <input type="submit" value="Login" class="btn btn-default"/>
                     </dd>
+                    <span>Use "admin" for username and password</span>
                 </dl>
             </form>
-
-            {% if session.logged_in %}
-            <form action="{{ url_for('add_entry') }}" method="post" class="add-entry">
-                <dl>
-                    <dt>Title:</dt>
-                    <dd>
-                        <input type="text" size="30" name="title"/>
-                    </dd>
-                    <dt>Text:</dt>
-                    <dd>
-                        <textarea name="text" rows="5" cols="40"></textarea>
-                    </dd>
-                    <dd>
-                        <input type="submit" value="Share"/>
-                    </dd>
-                </dl>
-            </form>
-            {% endif %}
-            <ul class="entries">
-                {% for entry in entries %}
-                <li>
-                    <h2>{{ entry.title }}</h2>
-                    {{ entry.text|safe }}
-                </li>
-                {% else %}
-                <li>
-                    <em>No entries here so far. Add some!</em>
-                </li>
-                {% endfor %}
-            </ul>
         </div>
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
     </body>
 </html>
 
