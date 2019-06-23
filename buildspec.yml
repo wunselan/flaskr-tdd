@@ -9,6 +9,8 @@ phases:
   install:
     runtime-versions:
       python: 3.7
+    commands:
+      - apt-get update && apt-get install -y git
   pre_build:
     commands:
       - pip install -r requirements.txt
