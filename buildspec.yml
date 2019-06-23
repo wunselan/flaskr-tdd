@@ -9,15 +9,9 @@ phases:
   install:
     runtime-versions:
       python: 3.7
-    commands:
-      - apt-get update && apt-get install -y git
   pre_build:
     commands:
       - pip install -r requirements.txt
   build:
     commands:
       - python app-test.py
-  post_build:
-    commands:
-      - git archive --format=zip -9 -o flaskr-ci-cd-source.zip HEAD
-      - echo "TODO Upload ZIP archive as an artifact to S3 storage"
