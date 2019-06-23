@@ -11,7 +11,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 # configuration
 DATABASE = 'flaskr.db'
-DEBUG = os.getenv('DEBUG', 'FALSE')
+DEBUG = os.getenv('DEBUG', False)
+DEBUG = True if DEBUG == 'True' else False
 SECRET_KEY = 'my_precious'
 USERNAME = 'admin'
 PASSWORD = 'admin'
@@ -98,5 +99,5 @@ def search():
     return render_template('search.html')
 
 
-if __name__ == '__main__' and DEBUG == 'TRUE':
+if __name__ == '__main__' and DEBUG is True:
     application.run()

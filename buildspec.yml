@@ -3,7 +3,7 @@ version: 0.2
 
 env:
   variables:
-    DEBUG: "FALSE"
+    DEBUG: "False"
 
 phases:
   install:
