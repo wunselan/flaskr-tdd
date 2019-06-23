@@ -18,3 +18,4 @@ phases:
   post_build:
     commands:
       - git archive --format=zip -9 -o flaskr-ci-cd-source.zip HEAD
+      - echo "TODO Upload ZIP archive as an artifact to S3 storage"
