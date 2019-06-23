@@ -1,0 +1,20 @@
+---
+version: 0.2
+
+env:
+  variables:
+    DEBUG: "FALSE"
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.7
+  pre-build:
+    commands:
+      - pip install -r requirements.txt
+  build:
+    commands:
+      - python app-test.py
+  post-build:
+    commands:
+      - git archive --format=zip -9 -o flaskr-ci-cd-source.zip HEAD
